@@ -1,0 +1,22 @@
+[build]
+  functions = "netlify/functions"
+ 
+[[redirects]]
+  from = "http://www.dreamakerproductions.com/*"
+  to = "https://dreamakerproductions.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://dreamakerproductions.com/*"
+  to = "https://dreamakerproductions.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.dreamakerproductions.com/*"
+  to = "https://dreamakerproductions.com/:splat"
+  status = 301
+  force = true
+[functions]
+  directory = "netlify/functions"
