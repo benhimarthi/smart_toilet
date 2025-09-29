@@ -32,7 +32,7 @@ const Footer: React.FC<FooterProps> = ({ content, language }) => {
   ];
 
   return (
-    <footer id="contact" className="bg-gray-900 text-white py-16">
+    <footer id="contact" className="text-white py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Logo and Description */}
