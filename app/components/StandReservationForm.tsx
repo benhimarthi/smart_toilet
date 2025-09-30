@@ -110,15 +110,30 @@ const StandReservationForm = () => {
         }
 
         const finalFormData = { ...formData, photoUrl };
-        await addDoc(collection(db, "standReservations"), finalFormData);
+        const docRef = await addDoc(collection(db, "standReservations"), finalFormData);
+
+        // TODO: Implement QR code generation
+        const qrCodeDataUrl = 'https://via.placeholder.com/150'; // Placeholder
+        
+        await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            registrationId: docRef.id,
+            qrCodeDataUrl,
+          }),
+        });
         
         setIsSuccess(true);
         setFormData(initialFormData);
         setImageFile(null);
         setImagePreview(null);
       } catch (error) {
-        console.error("Error adding document: ", error);
-        alert('La réservation a échoué. Veuillez vérifier vos autorisations Firestore.');
+        console.error("Error adding document or sending email: ", error);
+        alert('La réservation a échoué. Veuillez vérifier vos autorisations Firestore et la configuration de l\'API d\'envoi d\'e-mails.');
       } finally {
         setIsSubmitting(false);
       }
@@ -173,7 +188,7 @@ const StandReservationForm = () => {
                   <h3 className="font-bold text-lg text-[#5F0030]">Vos informations</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
                       <div className='space-y-4'>
-                          <input type="text" name="companyName" placeholder="Nom de l'entreprise" value={formData.companyName} onChange={handleChange} className={`w-full p-3 border rounded-md ${errors.companyName ? 'border-red-500' : 'border-gray-300'}`}/>
+                          <input type="text" name="companyName" placeholder="Nom de l\'entreprise" value={formData.companyName} onChange={handleChange} className={`w-full p-3 border rounded-md ${errors.companyName ? 'border-red-500' : 'border-gray-300'}`}/>
                           <input type="text" name="contactPerson" placeholder="Nom et prenom" value={formData.contactPerson} onChange={handleChange} className={`w-full p-3 border rounded-md ${errors.contactPerson ? 'border-red-500' : 'border-gray-300'}`}/>
                       </div>
                       <div 
@@ -239,7 +254,7 @@ const StandReservationForm = () => {
 
               <div className="flex items-center gap-2">
                 <input type="checkbox" id="acceptedTerms" name="acceptedTerms" checked={formData.acceptedTerms} onChange={handleChange} className={`h-4 w-4 rounded ${errors.acceptedTerms ? 'border-red-500' : 'border-gray-300'}`}/>
-                <label htmlFor="acceptedTerms" className="text-sm text-gray-600">J'accepte les conditions de réservation et la politique d'annulation.</label>
+                <label htmlFor="acceptedTerms" className="text-sm text-gray-600">J\'accepte les conditions de réservation et la politique d\'annulation.</label>
               </div>
 
               <div className="text-right pt-2">
