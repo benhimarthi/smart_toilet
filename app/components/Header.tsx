@@ -1,93 +1,94 @@
-// components/Header.tsx 
+'use client';
+
 import React from 'react';
-import Image from 'next/image';
-import { ChevronDown, Menu, X } from 'lucide-react';
-import { ContentData, Language } from '../types';
-import RegistrationForm from './RegistrationForm';
-import { DialogTrigger } from '@radix-ui/react-dialog';
-import { Button } from './ui/button';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@radix-ui/react-dropdown-menu';
+import { Menu, X, Moon } from 'lucide-react';
+
+// A placeholder for the new logo, as seen in the image.
+const EventorLogo = () => (
+    <div className="flex items-center space-x-2">
+        <a href="#">
+          <img src="/images/smart_toilet_title.png" alt="logo" width={350}/>
+        </a>
+    </div>
+);
+
+// The navigation links from the new design.
+const navLinks = [
+    { title: 'About', href: '#' },
+    { title: 'Schedule', href: '#' },
+    { title: 'Video', href: '#' },
+    { title: 'Speakers', href: '#' },
+    { title: 'Pricing', href: '#' },
+    { title: 'Contact', href: '#' },
+];
 
 interface HeaderProps {
-  language: Language;
-  setLanguage: (language: Language) => void;
-  isMenuOpen: boolean;
-  setIsMenuOpen: (isOpen: boolean) => void;
-  content: ContentData;
-  setActiveView: (view: 'exhibition' | 'activities' | 'about') => void;
-
+    isMenuOpen: boolean;
+    setIsMenuOpen: (isOpen: boolean) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ 
-  language, 
-  setLanguage, 
-  isMenuOpen, 
-  setIsMenuOpen, 
-  content, 
-  setActiveView
-}) => {
-  const t = content[language];
+const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
+    return (
+        <header className="absolute top-0 z-50 w-full bg-white/30 backdrop-blur-lg border-b border-white/20">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
+                <div className="flex items-center justify-between">
+                    
+                    {/* Logo */}
+                    <EventorLogo />
 
-  return (
-    <header className="sticky top-0 z-50  w-full">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-between justify-between">
-          {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <Image src="/images/smart_toilet_title.png" alt="Smart Toilet" width={550} height={400} />
-          </div>
+                    {/* Desktop Navigation */}
+                    <nav className="hidden lg:flex items-center space-x-8">
+                        {navLinks.map((link) => (
+                            <a key={link.title} href={link.href} className="text-gray-700 hover:text-black transition-colors">
+                                {link.title}
+                            </a>
+                        ))}
+                    </nav>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-4">
-          <RegistrationForm />
-          <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-              <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 text-amber-100 hover:text-amber-300"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white rounded-xl shadow-lg mt-2 w-56 flex flex-col p-3">
-                <DropdownMenuItem onClick={() => setActiveView('activities')} className="cursor-pointer">
-                  Activités
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setActiveView('exhibition')} className="cursor-pointer">
-                  Exhibition et Stand
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setActiveView('about')} className="cursor-pointer">
-                  À Propos
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+                    {/* Right-side controls for desktop */}
+                    <div className="hidden lg:flex items-center space-x-4">
+                        <button className="p-2 text-gray-600 hover:text-gray-900 rounded-full hover:bg-gray-200/50 transition-colors" aria-label="Toggle dark mode">
+                            <Moon size={22} />
+                        </button>
+                        <button className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#f67c09]/55 to-[#4A2E22] text-white font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
+                            Register For 2025
+                        </button>
+                        <button className="px-6 py-2.5 border border-[#4A2E22] rounded-lg text-[#4A2E22] font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
+                            Register For 2026
+                        </button>
+                    </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-amber-100 hover:text-amber-300"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+                    {/* Mobile Menu Button */}
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className="lg:hidden p-2 text-gray-700 hover:text-black"
+                        aria-label="Toggle menu"
+                    >
+                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden mt-4 py-4 border-t border-amber-600">
-            <nav className="flex flex-col space-y-4">
-              <a href="#home" className="text-amber-100 hover:text-amber-300 font-medium">{t.nav.home}</a>
-              <a href="#about" className="text-amber-100 hover:text-amber-300 font-medium">{t.nav.about}</a>
-              <a href="#speakers" className="text-amber-100 hover:text-amber-300 font-medium">{t.nav.speakers}</a>
-              <a href="#contact" className="text-amber-100 hover:text-amber-300 font-medium">{t.nav.contact}</a>
-            </nav>
-          </div>
-        )}
-      </div>
-    </header>
-  );
+                {/* Mobile Menu */}
+                {isMenuOpen && (
+                    <div className="lg:hidden mt-6 pb-4">
+                        <nav className="flex flex-col items-center space-y-5">
+                            {navLinks.map((link) => (
+                                <a key={link.title} href={link.href} className="text-gray-700 hover:text-black">
+                                    {link.title}
+                                </a>
+                            ))}
+                            <button className="w-full max-w-xs mt-4 px-6 py-3 rounded-lg bg-gradient-to-r from-[#f67c09]/55 to-[#4A2E22] text-white font-semibold">
+                                Register For 2025
+                            </button>
+                            <button className="px-6 py-2.5 border border-[#4A2E22] rounded-lg text-[#4A2E22] font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
+                                Register For 2026
+                            </button>
+                        </nav>
+                    </div>
+                )}
+            </div>
+        </header>
+    );
 };
 
 export default Header;
