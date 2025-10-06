@@ -71,12 +71,8 @@ const Page: React.FC = () => {
       backgroundAttachment: 'fixed',
     }}>
       <Header 
-            content={content} 
-            language={language} 
-            setLanguage={setLanguage} 
             isMenuOpen={isMenuOpen} 
             setIsMenuOpen={setIsMenuOpen}
-            setActiveView={setActiveView}
           />
       <div ref={scrollableContainerRef} className="w-full flex-grow overflow-y-auto flex flex-col items-center mx-auto p-0 relative">
         <div className='relative w-full'>
