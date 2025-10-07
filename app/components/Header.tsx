@@ -10,7 +10,7 @@ const navLinks = [
     { title: 'Schedule', href: '#schedule' },
     { title: 'Video', href: '#videos' },
     { title: 'Speakers', href: '#speakers' },
-    { title: 'Pricing', href: '#pricing' },
+    { title: 'Stands', href: '#pricing' },
     { title: 'Contact', href: '#contact' },
 ];
 
