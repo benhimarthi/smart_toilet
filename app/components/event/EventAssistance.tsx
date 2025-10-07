@@ -8,6 +8,7 @@ import DotPattern from '../DotPattern';
 const EventAssistance = () => {
   return (
     <motion.section
+      id="contact"
       className="relative w-full bg-white py-20 lg:py-24"
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}

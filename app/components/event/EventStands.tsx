@@ -9,6 +9,7 @@ import StandReservationForm from '../StandReservationForm';
 const EventStands = () => {
     return (
         <div 
+            id="pricing"
             className="relative w-full  overflow-hidden"
             style={{
                 backgroundImage: `url("/images/homepage.png")`,

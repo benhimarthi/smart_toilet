@@ -4,23 +4,14 @@ import React from 'react';
 import { Menu, X, Moon } from 'lucide-react';
 import RegistrationForm from './RegistrationForm';
 
-// A placeholder for the new logo, as seen in the image.
-const EventorLogo = () => (
-    <div className="flex items-center space-x-2">
-        <a href="#">
-          <img src="/images/smart_toilet_title.png" alt="logo" width={350}/>
-        </a>
-    </div>
-);
-
 // The navigation links from the new design.
 const navLinks = [
-    { title: 'About', href: '#' },
-    { title: 'Schedule', href: '#' },
-    { title: 'Video', href: '#' },
-    { title: 'Speakers', href: '#' },
-    { title: 'Pricing', href: '#' },
-    { title: 'Contact', href: '#' },
+    { title: 'About', href: '#about' },
+    { title: 'Schedule', href: '#schedule' },
+    { title: 'Video', href: '#videos' },
+    { title: 'Speakers', href: '#speakers' },
+    { title: 'Pricing', href: '#pricing' },
+    { title: 'Contact', href: '#contact' },
 ];
 
 interface HeaderProps {
@@ -29,6 +20,23 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+        const section = document.querySelector(href);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const EventorLogo = () => (
+        <div className="flex items-center space-x-2">
+            <a href="#home" onClick={(e) => handleNavClick(e, '#home')}>
+              <img src="/images/smart_toilet_title.png" alt="logo" width={350}/>
+            </a>
+        </div>
+    );
+
     return (
         <header className="absolute top-0 z-50 w-full bg-white/30 backdrop-blur-lg border-b border-white/20">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
@@ -40,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
                     {/* Desktop Navigation */}
                     <nav className="hidden lg:flex items-center space-x-8">
                         {navLinks.map((link) => (
-                            <a key={link.title} href={link.href} className="text-gray-700 hover:text-black transition-colors">
+                            <a key={link.title} href={link.href} onClick={(e) => handleNavClick(e, link.href)} className="text-gray-700 hover:text-black transition-colors">
                                 {link.title}
                             </a>
                         ))}
@@ -72,7 +80,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
                     <div className="lg:hidden mt-6 pb-4">
                         <nav className="flex flex-col items-center space-y-5">
                             {navLinks.map((link) => (
-                                <a key={link.title} href={link.href} className="text-gray-700 hover:text-black">
+                                <a key={link.title} href={link.href} onClick={(e) => {handleNavClick(e, link.href); setIsMenuOpen(false); }} className="text-gray-700 hover:text-black">
                                     {link.title}
                                 </a>
                             ))}

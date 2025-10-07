@@ -106,7 +106,7 @@ const SpeakerDetailsDialog: React.FC<SpeakerDetailsDialogProps> = ({ speaker, on
 
     return (
         <Dialog open={!!speaker} onOpenChange={onClose}>
-            <DialogContent className="bg-white/80 backdrop-blur-md rounded-2xl p-8 max-w-2xl w-full mx-4 sm:mx-0">
+            <DialogContent className="bg-white/80 backdrop-blur-md rounded-2xl p-8 max-w-2xl w-full mx-4 sm:mx-0 shadow-[20px_20px_40px_rgba(120,60,1,0.25)]">
                 <DialogHeader>
                     <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
                         <img src={speaker.imageUrl} alt={speaker.name} className="w-32 h-32 rounded-full object-cover border-4 border-white" />
@@ -143,7 +143,7 @@ const EventSpeaker = () => {
     };
 
     return (
-        <div className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div id="schedule" className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
             <div
                 className="absolute inset-0 bg-repeat bg-center opacity-20"
                 style={{ backgroundImage: "url('/images/bg-pattern-circles.png')" }}

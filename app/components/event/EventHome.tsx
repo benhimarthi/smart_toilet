@@ -15,7 +15,7 @@ const EventHome = () => {
     });
 
     return (
-        <div className="h-screen w-full" >
+        <div id="home" className="h-screen w-full" >
             <div className="flex flex-col items-center justify-center h-full bg-black/30 backdrop-blur-sm text-white">
 
                 <div className='w-full h-4/5 lg:pl-40 flex flex-col md:flex-row lg:flex-row lg:items-center justify-start md:justify-around rounded-lg p-4 z-10 relative'>

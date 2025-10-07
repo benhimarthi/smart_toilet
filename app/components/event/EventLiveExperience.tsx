@@ -101,7 +101,7 @@ const EventLiveExperience = () => {
     };
 
     return (
-        <div className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8 pt-20 relative overflow-hidden">
+        <div id="videos" className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8 pt-20 relative overflow-hidden">
             {/* Background pattern - replace with your actual pattern image */}
             <div
                 className="absolute inset-0 bg-repeat bg-center opacity-20"

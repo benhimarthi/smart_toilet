@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import DotPattern from '../DotPattern';
+import RegistrationForm from '../RegistrationForm';
 
 // --- SVG for the Play Icon ---
 const PlayIcon = () => (
@@ -29,7 +30,7 @@ const AboutEvent = () => {
     const DUMMY_VIDEO_URL = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
 
     return (
-        <section className="relative w-full py-20 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <section id="about" className="relative w-full py-20 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
             {/* Background Gradient */}
             <div className="absolute inset-0 bg-white to-pink-100"></div>
 
@@ -109,9 +110,7 @@ const AboutEvent = () => {
                     </div>
 
                     <div className="pt-6 flex justify-center lg:justify-start">
-                        <button className="px-8 py-3 rounded-full bg-gradient-to-r from-[#f67c09]/55 to-[#4A2E22] text-white font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300">
-                            Register Now
-                        </button>
+                        <RegistrationForm />
                     </div>
                 </div>
             </div>

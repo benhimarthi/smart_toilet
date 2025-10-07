@@ -141,7 +141,7 @@ const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
 // --- Main EventPlan Component ---
 const EventPlan = () => {
   return (
-    <div className="relative w-full bg-white py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div id="speakers" className="relative w-full bg-white py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div 
             className="absolute inset-0 bg-repeat bg-center opacity-30"
             style={{ backgroundImage: "url('/images/bg-pattern-circles.png')" }}
