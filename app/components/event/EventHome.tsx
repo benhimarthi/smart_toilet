@@ -19,8 +19,8 @@ const EventHome = () => {
 
                 <div className='w-full h-4/5 lg:pl-40 flex flex-col md:flex-row lg:flex-row lg:items-center justify-start md:justify-around rounded-lg p-4 z-10 relative'>
                     <div className="relative z-10">
-                        <h1 className="text-2xl lg:text-9xl font-bold mb-4 text-[#4A2E22]">Conferance on <br/> Smart toilet</h1>
-                        <p className="mb-8 text-[#4A2E22] font-bold text-xl lg:text-3xl">
+                        <h1 className="text-2xl lg:text-9xl font-bold mb-4 text-white">Conferance on <br/> Smart toilet</h1>
+                        <p className="mb-8 text-[#4A2E22] text-xl lg:text-3xl">
                             Join us for the First 2025 smart toilet Event <br />
                             Live event on September 2025
                         </p>

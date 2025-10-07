@@ -78,9 +78,9 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker }) => {
                 <p className="text-gray-800">{speaker.time}</p>
             </div>
             <div className="flex-grow-[2] text-center sm:text-left">
-                <p className="font-bold text-red-700">{speaker.title}</p>
+                <p className="font-bold text-[#f67c09]">{speaker.title}</p>
                 <p className="text-gray-600 text-sm">
-                    {speaker.description} <a href="#" className="text-red-700 font-semibold hover:underline">Read more</a>
+                    {speaker.description} <a href="#" className="text-[#f67c09] font-semibold hover:underline">Read more</a>
                 </p>
             </div>
         </motion.div>
