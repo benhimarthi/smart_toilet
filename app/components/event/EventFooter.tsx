@@ -8,7 +8,11 @@ const EventFooter = () => {
             <div className="container mx-auto">
                 <div className="flex justify-between items-center">
                     <div className="flex items-center">
-                        <h2 className="text-xl font-bold text-white mr-6">MCED Footer</h2>
+                    <div className="flex items-center space-x-2">
+                        <a href="#">
+                            <img src="/images/smart_toilet_title.png" alt="logo" width={350}/>
+                        </a>
+                    </div>
                         <div className="border-l border-gray-600 h-10 mx-6"></div>
                         <div>
                             <div className="flex space-x-4 text-sm">
