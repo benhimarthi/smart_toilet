@@ -40,7 +40,7 @@ const EventHome = () => {
                             repeatType: "mirror",
                         }}
                     >
-                        <div className='w-[320px] lg:w-[400px] h-[300px] lg:h-[400px] bg-white rounded-lg'>
+                        <div className='hidden w-[320px] lg:w-[400px] h-[300px] lg:h-[400px] bg-white rounded-lg'>
                         </div>
                     </motion.div>
                     <motion.div 

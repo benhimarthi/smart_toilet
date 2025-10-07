@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import DotPattern from '../DotPattern';
+import EventFooter from './EventFooter';
 
 const testimonials = [
   {
@@ -154,7 +155,6 @@ const EventComments = () => {
                 ></button>
                 ))}
             </div>
-            
       </div>
       
     </motion.section>

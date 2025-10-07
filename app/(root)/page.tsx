@@ -18,6 +18,7 @@ import AboutEvent from '../components/event/AboutEvent';
 import EventComment from '../components/event/EventComment';
 import EventSouvenirs from '../components/event/EventSouvenirs';
 import EventAssistance from '../components/event/EventAssistance';
+import EventFooter from '../components/event/EventFooter';
 
 
 type View = 'exhibition' | 'activities' | 'about';
@@ -96,6 +97,7 @@ const Page: React.FC = () => {
         <EventSouvenirs />
         <EventAssistance />
         <EventComment />
+        <EventFooter/>
       </div>
     </div>
   );
