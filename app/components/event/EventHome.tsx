@@ -40,8 +40,8 @@ const EventHome = () => {
                             repeatType: "mirror",
                         }}
                     >
-                        <div className='w-[320px] lg:w-[750px] h-[300px] lg:h-[400px]  rounded-lg'>
-                            <img src="images/smart_toilet_image.png" alt="img" className='w-full h-full object-cover'/>
+                        <div className='w-[320px] lg:w-[750px] h-[300px] lg:h-[600px] rounded-full flex items-center justify-center'>
+                            <img src="images/smart_toilet_imag_sc.png" alt="img" className='w-full h-full object-cover'/>
                         </div>
                     </motion.div>
                     <motion.div 
@@ -87,3 +87,4 @@ const EventHome = () => {
 };
 
 export default EventHome;
+// shadow-[0px_0px_40px_45px_rgba(120,60,1,0.25)]
