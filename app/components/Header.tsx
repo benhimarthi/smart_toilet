@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Menu, X, Moon } from 'lucide-react';
+import RegistrationForm from './RegistrationForm';
 
 // A placeholder for the new logo, as seen in the image.
 const EventorLogo = () => (
@@ -50,10 +51,8 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
                         <button className="p-2 text-gray-600 hover:text-gray-900 rounded-full hover:bg-gray-200/50 transition-colors" aria-label="Toggle dark mode">
                             <Moon size={22} />
                         </button>
-                        <button className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#f67c09]/55 to-[#4A2E22] text-white font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
-                            Register For 2025
-                        </button>
-                        <button className="px-6 py-2.5 border border-[#4A2E22] rounded-lg text-[#4A2E22] font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
+                        <RegistrationForm/>
+                        <button className="py-2 px-8 border border-[#4A2E22] rounded-lg text-[#4A2E22] font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
                             Register For 2026
                         </button>
                     </div>

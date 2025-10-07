@@ -166,24 +166,26 @@ const RegistrationForm = () => {
     <>
       <Dialog>
         <DialogTrigger asChild>
-          <Button className="bg-[#5F0030] hover:bg-[#3E1C21] text-white font-bold py-3 px-8 rounded-lg">Register for the next event 2025</Button>
+          <Button className="bg-gradient-to-r from-[#f67c09]/55 to-[#4A2E22] hover:bg-[#3E1C21] text-white font-bold py-6 px-8 rounded-lg">
+            Register for 2025
+          </Button>
         </DialogTrigger>
-        <DialogContent className="max-w-4xl w-full rounded-xl shadow-2xl grid md:grid-cols-5 overflow-hidden bg-white backdrop-blur-sm p-0" style={{
-          backgroundImage: `url("/images/homepage.jpg")`,
+        <DialogContent className="max-w-4xl w-full rounded-xl shadow-2xl grid md:grid-cols-5 lg:overflow-hidden p-0" style={{
+          backgroundImage: `url("/images/smart_toilet_bg.jpg")`,
         }}>
-          <div className="md:col-span-2 p-8 space-y-4 backdrop-blur-sm">
-            <h2 className="text-4xl font-bold text-[#5F0030]">REGISTER TO PARTICIPATE</h2>
+          <div className="md:col-span-2 p-8 space-y-4 bg-white/30 backdrop-blur-lg border-b border-white/20 m-0 lg:w-[370px]">
+            <h2 className="text-3xl font-bold text-[#f67c09]">REGISTER TO PARTICIPATE</h2>
             <p className="text-white">
               Fill in the form to receive your badge and take part in the event.
             </p>
           </div>
           
-          <form onSubmit={handleSubmit} className="md:col-span-3 bg-white/65 p-8">
+          <form onSubmit={handleSubmit} className="md:col-span-3 space-y-4 bg-white p-8">
             <div>
-              <h3 className="text-md font-bold text-[#5F0030] mb-4">YOUR PERSONAL DETAILS</h3>
+              <h3 className="text-md font-bold text-[#f67c09] mb-4">YOUR PERSONAL DETAILS</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
                 <div className="md:col-span-1">
-                  <label htmlFor="whoAreYou" className="block text-sm font-medium text-[#5F5300]">Who are you</label>
+                  <label htmlFor="whoAreYou" className="block text-sm font-medium text-gray-600">Who are you</label>
                   <select id="whoAreYou" name="whoAreYou" value={formData.whoAreYou} onChange={handleChange} className="mt-1 block w-full p-4 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                     <option>Regular intender</option>
                     <option>Enterprise</option>
@@ -205,7 +207,7 @@ const RegistrationForm = () => {
             </div>
 
             <div>
-              <h3 className="text-md font-bold text-[#5F0030] mb-4">YOUR RESIDENTIAL ADDRESS</h3>
+              <h3 className="text-md font-bold text-[#f67c09] mb-4">YOUR RESIDENTIAL ADDRESS</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
                 <div className="md:col-span-2">
                   <input type="text" id="address1" name="address1" placeholder="Street address" value={formData.address1} onChange={handleChange} className={`p-4 border-2 w-full rounded-lg ${errors.address1 ? 'border-red-500' : 'border-gray-300'}`}/>
@@ -226,7 +228,7 @@ const RegistrationForm = () => {
             </div>
 
             <div>
-              <h3 className="text-md font-bold text-[#5F0030] mb-4">CONTACT DETAILS</h3>
+              <h3 className="text-md font-bold text-[#f67c09] mb-4">CONTACT DETAILS</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
                   <div>
                       <input type="text" id="phone" name="phone" placeholder="Phone number" value={formData.phone} onChange={handleChange} className={`p-4 border-2 w-full rounded-lg ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}/>
@@ -241,13 +243,13 @@ const RegistrationForm = () => {
 
             {formData.whoAreYou === 'Regular intender' && (
               <div>
-                  <h3 className="text-md font-bold text-[#5F0030] mb-4">AREAS OF INTEREST</h3>
+                  <h3 className="text-md font-bold text-[#f67c09] mb-4">AREAS OF INTEREST</h3>
                   <AttendeeDetails interests={formData.interests} handleInterestChange={handleInterestChange} />
               </div>
             )}
             {formData.whoAreYou === 'Enterprise' && (
               <div>
-                <h3 className="text-md font-bold text-[#5F0030] mb-4">ENTERPRISE DETAILS</h3>
+                <h3 className="text-md font-bold text-[#f67c09] mb-4">ENTERPRISE DETAILS</h3>
                 <EnterpriseDetails 
                   companyName={formData.companyName}
                   handleChange={handleChange}
@@ -257,7 +259,7 @@ const RegistrationForm = () => {
             )}
             {formData.whoAreYou === 'Press' && (
               <div>
-                <h3 className="text-md font-bold text-[#5F0030] mb-4">OTHER DETAILS</h3>
+                <h3 className="text-md font-bold text-[#f67c09] mb-4">OTHER DETAILS</h3>
                 <PressDetails 
                   mediaOutlet={formData.mediaOutlet}
                   jobTitle={formData.jobTitle}
@@ -268,7 +270,7 @@ const RegistrationForm = () => {
 
             {formData.whoAreYou === 'Exhibitor' && (
               <div>
-                <h3 className="text-md font-bold text-[#5F0030] mb-4">EXHIBITOR DETAILS</h3>
+                <h3 className="text-md font-bold text-[#f67c09] mb-4">EXHIBITOR DETAILS</h3>
                 <ExhibitorDetails 
                   companyName={formData.companyName}
                   companyWebsite={formData.companyWebsite}
@@ -280,7 +282,7 @@ const RegistrationForm = () => {
             )}
 
             <div className="flex justify-end mt-4">
-              <Button type="submit" className="bg-[#5F0030] hover:bg-[#3E1C21] text-white font-bold py-3 px-8 rounded-lg">Submit</Button>
+              <Button type="submit" className="bg-[#f67c09]/75 hover:bg-[#f67c09] text-white font-bold py-3 px-8 rounded-lg">Submit</Button>
             </div>
           </form>
         </DialogContent>

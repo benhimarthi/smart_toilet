@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useState } from 'react';
 import DotPattern from '../DotPattern';
 
 // --- SVG for the Play Icon ---
@@ -13,6 +13,21 @@ const PlayIcon = () => (
 
 // --- Main AboutEvent Component ---
 const AboutEvent = () => {
+    const [showPopup, setShowPopup] = useState(false);
+    const [videoUrl, setVideoUrl] = useState('');
+
+    const openPopup = (url: string) => {
+        setVideoUrl(url);
+        setShowPopup(true);
+    };
+
+    const closePopup = () => {
+        setShowPopup(false);
+        setVideoUrl('');
+    };
+
+    const DUMMY_VIDEO_URL = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+
     return (
         <section className="relative w-full py-20 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
             {/* Background Gradient */}
@@ -63,7 +78,9 @@ const AboutEvent = () => {
                                 className="w-full h-full object-cover"
                             />
                             <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                                <button className="w-16 h-16 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center transform hover:scale-110 transition-transform" aria-label="Play video">
+                                <button 
+                                    onClick={() => openPopup(DUMMY_VIDEO_URL)}
+                                    className="w-16 h-16 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center transform hover:scale-110 transition-transform" aria-label="Play video">
                                     <PlayIcon />
                                 </button>
                             </div>
@@ -98,6 +115,20 @@ const AboutEvent = () => {
                     </div>
                 </div>
             </div>
+
+            {showPopup && (
+                <div className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50">
+                    <div className="relative w-full max-w-4xl h-full max-h-[500px] bg-black">
+                        <button
+                            onClick={closePopup}
+                            className="absolute -top-10 right-0 text-white text-3xl font-bold z-10"
+                        >
+                            &times;
+                        </button>
+                        {/* YouTube video iframe will go here */}
+                    </div>
+                </div>
+            )}
         </section>
     );
 };

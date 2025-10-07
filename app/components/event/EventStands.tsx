@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import DotPattern from '../DotPattern';
+import StandReservationForm from '../StandReservationForm';
 
 const EventStands = () => {
     return (
@@ -35,7 +36,7 @@ const EventStands = () => {
                     </div>
 
                     <div className="w-full md:w-[950px] flex flex-col items-center md:items-start text-center md:text-left space-y-6 text-[#4A2E22]">
-                        <h1 className="text-3xl lg:text-6xl font-bold filter text-[#4A2E22]">
+                        <h1 className="text-3xl lg:text-6xl font-bold filter text-white">
                             Stand reservation
                         </h1>
                         <p className="text-lg max-w-lg filter text-gray-700">
@@ -57,6 +58,7 @@ const EventStands = () => {
                                         <p className="text-[#4A2E22] font-semibold">tarifs <span className="text-white bg-[#f67c09] px-4 py-1 rounded-full ml-2">MAD 200</span></p>
                                     </div>
                                     <p className="mt-4 text-black">inclus : 1 tables, 2 chaises, cloison arriere, eclairage basique</p>
+                                    <StandReservationForm/>
                                 </div>
                                 <div className="bg-[#f67c09] text-white p-6 relative">
                                     <span className="absolute top-0 right-4 bg-white px-3 py-1 rounded-b-lg text-sm text-[#4A2E22] font-bold shadow-lg">3m x 3m</span>
@@ -84,6 +86,7 @@ const EventStands = () => {
                                         <p className="text-[#5F5300] font-semibold">tarifs <span className="text-white bg-[#4A2E22] px-4 py-1 rounded-full ml-2">MAD 500</span></p>
                                     </div>
                                     <p className="mt-4 text-black">inclus : mobilier, prise électrique, Wi-Fi, signalétique</p>
+                                    <StandReservationForm/>
                                 </div>
                                 <div className="bg-[#4A2E22] text-white p-6 relative">
                                     <span className="absolute font-bold text-[#5F5300] top-0 right-4 bg-white px-3 py-1 rounded-b-lg text-sm shadow-lg">6m x 3m</span>

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 import DotPattern from '../DotPattern';
+import RegistrationForm from '../RegistrationForm';
 
 const EventHome = () => {
     //  Dummy countdown state
@@ -24,10 +25,7 @@ const EventHome = () => {
                             Join us for the First 2025 smart toilet Event <br />
                             Live event on September 2025
                         </p>
-
-                        <button className="bg-gradient-to-r from-[#f67c09]/55 to-[#4A2E22] hover:bg-[#5a3121] text-white font-bold py-3 px-6 rounded-lg mb-12">
-                            REGISTER FOR 2025
-                        </button>
+                        <RegistrationForm/>
                     </div>
                     
                     <motion.div 
@@ -45,7 +43,7 @@ const EventHome = () => {
                         </div>
                     </motion.div>
                     <motion.div 
-                        className="text-4xl md:text-8xl lg:text-[150px] font-bold text-white/45 absolute top-[200px] md:top-1/2 left-[75px] -translate-x-1/2 -translate-y-1/2"
+                        className="text-4xl md:text-8xl lg:text-[150px] font-bold text-white/30 absolute top-[200px] md:top-1/2 left-[75px] -translate-x-1/2 -translate-y-1/2"
                         animate={{ x: [-20, 20] }}
                         transition={{
                             ease: "linear",

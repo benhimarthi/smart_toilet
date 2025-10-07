@@ -143,12 +143,12 @@ const StandReservationForm = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-[#5F0030] hover:bg-[#4c0026] text-white font-bold py-3 px-8 rounded-full">Réserver un Stand</Button>
+        <Button className="bg-gradient-to-r from-[#f67c09]/55 to-[#4A2E22] hover:bg-[#4c0026] text-white font-bold py-3 px-8 my-2 rounded-lg">Réserver le Stand</Button>
       </DialogTrigger>
       <DialogContent className="max-w-7xl h-auto h-4/5 rounded-xl shadow-2xl grid md:grid-cols-5 overflow-hidden p-0 bg-[#FFFBEB]">
         
         {/* Left Column */}
-        <div className="md:col-span-2 space-y-6 p-8 bg-cover bg-center" style={{ backgroundImage: `url('/images/homepage.jpg')`}}>
+        <div className="md:col-span-2 space-y-6 p-8 bg-cover bg-center" style={{ backgroundImage: `url('/images/smart_toilet_bg.jpg')`}}>
           <div className='p-6 backdrop-blur-sm bg-black/30 rounded-lg'>
             <h1 className="text-4xl font-bold text-white mb-6">Formulaire de réservation</h1>
             
