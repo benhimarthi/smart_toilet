@@ -170,17 +170,17 @@ const RegistrationForm = () => {
             Register for 2025
           </Button>
         </DialogTrigger>
-        <DialogContent className="max-w-4xl w-full rounded-xl shadow-2xl grid md:grid-cols-5 lg:overflow-hidden p-0 h-auto" style={{
+        <DialogContent className="max-w-4xl w-full rounded-xl shadow-2xl grid md:grid-cols-5 p-0 h-4/5" style={{
           backgroundImage: `url("/images/smart_toilet_bg.jpg")`,
         }}>
-          <div className="md:col-span-2 p-8 space-y-4 bg-white/30 backdrop-blur-lg border-b border-white/20 m-0 lg:w-[370px]">
+          <div className="md:col-span-2 p-8 space-y-4 bg-white/30 backdrop-blur-lg border-b border-white/20 m-0 lg:w-[370px] rounded-bl-xl rounded-tl-xl">
             <h2 className="text-3xl font-bold text-[#f67c09]">REGISTER TO PARTICIPATE</h2>
             <p className="text-white">
               Fill in the form to receive your badge and take part in the event.
             </p>
           </div>
           
-          <form onSubmit={handleSubmit} className="md:col-span-3 space-y-4 bg-white p-8">
+          <form onSubmit={handleSubmit} className="md:col-span-3 space-y-4 bg-white p-8 overflow-y-auto h-full rounded-br-xl rounded-tr-xl">
             <div>
               <h3 className="text-md font-bold text-[#f67c09] mb-4">YOUR PERSONAL DETAILS</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">

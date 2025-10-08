@@ -19,6 +19,7 @@ import EventComment from '../components/event/EventComment';
 import EventSouvenirs from '../components/event/EventSouvenirs';
 import EventAssistance from '../components/event/EventAssistance';
 import EventFooter from '../components/event/EventFooter';
+import LoadingScreen from '../components/LoadingScreen';
 
 
 type View = 'exhibition' | 'activities' | 'about';
@@ -27,7 +28,16 @@ const Page: React.FC = () => {
   const [language, setLanguage] = useState<Language>('EN');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeView, setActiveView] = useState<View>('exhibition');
+  const [isLoading, setIsLoading] = useState(true);
   const scrollableContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // 30 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -50,7 +60,7 @@ const Page: React.FC = () => {
       }
       clearTimeout(timeout);
     };
-  }, []);
+  }, [isLoading]);
 
   const renderContent = () => {
     switch (activeView) {
@@ -63,6 +73,10 @@ const Page: React.FC = () => {
         return <Exhibition />;
     }
   };
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className='w-full h-screen' style={{
@@ -104,25 +118,3 @@ const Page: React.FC = () => {
 };
 
 export default Page;
-
-/**
- * <div className='lg:w-4/5 w-full mx-auto h-screen flex flex-col backdrop-blur-lg items-center ' 
-       style={{
-          background: 'linear-gradient(to bottom,rgba(255, 255, 255, 0.2), #5F5300)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-        }}>
-        <Header 
-            content={content} 
-            language={language} 
-            setLanguage={setLanguage} 
-            isMenuOpen={isMenuOpen} 
-            setIsMenuOpen={setIsMenuOpen}
-            setActiveView={setActiveView}
-          />
-          <div ref={scrollableContainerRef} className="w-full flex-grow overflow-y-auto flex flex-col items-center mx-auto p-0">
-            {renderContent()}
-          </div>
-      </div>
- */
