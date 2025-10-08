@@ -170,7 +170,7 @@ const RegistrationForm = () => {
             Register for 2025
           </Button>
         </DialogTrigger>
-        <DialogContent className="max-w-4xl w-full rounded-xl shadow-2xl grid md:grid-cols-5 lg:overflow-hidden p-0" style={{
+        <DialogContent className="max-w-4xl w-full rounded-xl shadow-2xl grid md:grid-cols-5 lg:overflow-hidden p-0 h-auto" style={{
           backgroundImage: `url("/images/smart_toilet_bg.jpg")`,
         }}>
           <div className="md:col-span-2 p-8 space-y-4 bg-white/30 backdrop-blur-lg border-b border-white/20 m-0 lg:w-[370px]">

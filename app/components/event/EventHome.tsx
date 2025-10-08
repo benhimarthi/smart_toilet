@@ -20,7 +20,8 @@ const EventHome = () => {
 
                 <div className='w-full h-4/5 lg:pl-40 flex flex-col md:flex-row lg:flex-row lg:items-center justify-start md:justify-around rounded-lg p-4 z-10 relative'>
                     <div className="relative z-10">
-                        <h1 className="text-2xl lg:text-9xl font-bold mb-4 text-white">Conferance on <br/> Smart toilet</h1>
+                        <h1 className="text-2xl lg:text-7xl font-bold mb-4 text-white">
+                            Conferance on <br/> Smart toilet</h1>
                         <p className="mb-8 text-[#4A2E22] text-xl lg:text-3xl">
                             Join us for the First 2025 smart toilet Event <br />
                             Live event on September 2025
@@ -38,8 +39,8 @@ const EventHome = () => {
                             repeatType: "mirror",
                         }}
                     >
-                        <div className='w-[320px] lg:w-[750px] h-[300px] lg:h-[600px] rounded-full flex items-center justify-center'>
-                            <img src="images/smart_toilet_imag_sc.png" alt="img" className='w-full h-full object-cover'/>
+                        <div className='w-[320px] lg:w-[350px] h-[300px] lg:h-[300px] rounded-full flex items-center justify-center'>
+                            <img src="images/smart_toilet_image.png" alt="img" className='w-full h-full object-cover'/>
                         </div>
                     </motion.div>
                     <motion.div 
@@ -55,7 +56,7 @@ const EventHome = () => {
                         CONF-2025
                     </motion.div>
                     <motion.div 
-                        className="text-[208px] font-bold text-white/45 absolute top-[400px] md:top-[250px] left-0 lg:left-[1000px] -translate-x-1/2 -translate-y-1/2"
+                        className="text-[208px] font-bold text-white/45 absolute top-[400px] md:top-[250px] left-0 lg:left-[700px] -translate-x-1/2 -translate-y-1/2"
                         animate={{ x: [-80, 80] }}
                         transition={{
                             ease: "linear",

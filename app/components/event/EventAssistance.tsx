@@ -1,11 +1,63 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import DotPattern from '../DotPattern';
+import { db } from '../../../lib/firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 const EventAssistance = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    comment: ''
+  });
+
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prevState => ({ ...prevState, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    const { email, subject, comment } = formData;
+
+    if (!email || !subject || !comment) {
+      setStatus('error');
+      setMessage('Email, subject, and comment are required.');
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setStatus('error');
+      setMessage('Please enter a valid email address.');
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "contacts"), {
+        ...formData,
+        timestamp: new Date(),
+      });
+
+      setStatus('success');
+      setMessage('Your message has been sent successfully!');
+      setFormData({ firstName: '', lastName: '', email: '', subject: '', comment: '' });
+    } catch (error) {
+      console.error('Error sending message: ', error);
+      setStatus('error');
+      setMessage('Something went wrong. Please try again later.');
+    }
+  };
+
   return (
     <motion.section
       id="contact"
@@ -61,37 +113,43 @@ const EventAssistance = () => {
 
             {/* Right Form */}
             <div className="lg:col-span-2">
-              <form onSubmit={(e) => e.preventDefault()}>
+              <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="first-name" className="block text-sm font-medium text-gray-700 text-left mb-2">First Name</label>
-                    <input type="text" id="first-name" placeholder="Your First Name" className="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#4A2E22] focus:outline-none"/>
+                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 text-left mb-2">First Name</label>
+                    <input type="text" id="firstName" value={formData.firstName} onChange={handleChange} placeholder="Your First Name" className="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#4A2E22] focus:outline-none"/>
                   </div>
                   <div>
-                    <label htmlFor="last-name" className="block text-sm font-medium text-gray-700 text-left mb-2">Last Name</label>
-                    <input type="text" id="last-name" placeholder="Your Last Name" className="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#4A2E22] focus:outline-none"/>
+                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 text-left mb-2">Last Name</label>
+                    <input type="text" id="lastName" value={formData.lastName} onChange={handleChange} placeholder="Your Last Name" className="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#4A2E22] focus:outline-none"/>
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 text-left mb-2">Email address</label>
-                    <input type="email" id="email" placeholder="Enter Email" className="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#4A2E22] focus:outline-none"/>
+                    <input type="email" id="email" value={formData.email} onChange={handleChange} placeholder="Enter Email" className="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#4A2E22] focus:outline-none" required/>
                   </div>
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-700 text-left mb-2">Subject</label>
-                    <input type="text" id="subject" placeholder="Your Subject" className="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#4A2E22] focus:outline-none"/>
+                    <input type="text" id="subject" value={formData.subject} onChange={handleChange} placeholder="Your Subject" className="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#4A2E22] focus:outline-none" required/>
                   </div>
                 </div>
                 <div className="mt-6">
                   <label htmlFor="comment" className="block text-sm font-medium text-gray-700 text-left mb-2">Comment</label>
-                  <textarea id="comment" placeholder="Your Comment" rows={5} className="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#4A2E22] focus:outline-none"></textarea>
+                  <textarea id="comment" value={formData.comment} onChange={handleChange} placeholder="Your Comment" rows={5} className="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#4A2E22] focus:outline-none" required></textarea>
                 </div>
+                 {message && (
+                  <p className={`mt-4 text-sm ${status === 'error' ? 'text-red-500' : 'text-green-500'}`}>
+                    {message}
+                  </p>
+                )}
                 <div className="mt-8 text-right">
                    <motion.button
                     type="submit"
+                    disabled={status === 'loading'}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="bg-[#4A2E22] text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-purple-700 transition-colors"
                   >
-                    Submit
+                    {status === 'loading' ? 'Submitting...' : 'Submit'}
                   </motion.button>
                 </div>
               </form>
