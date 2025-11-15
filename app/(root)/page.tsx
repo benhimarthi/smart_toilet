@@ -92,7 +92,7 @@ const Page: React.FC = () => {
       <div ref={scrollableContainerRef} className="w-full flex-grow overflow-y-auto flex flex-col items-center mx-auto p-0 relative">
         <div className='relative w-full'>
           <EventHome/>
-          <EventTimer targetDate='2025-10-30T00:00:00'/>
+          <EventTimer targetDate='2026-10-30T00:00:00'/>
           <EventLiveExperience/>
           <EventSpeaker/>
           <AboutEvent/>
