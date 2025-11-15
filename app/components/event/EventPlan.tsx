@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, Variants } from 'framer-motion';
 import DotPattern from '../DotPattern';
 
 // --- Data Section ---
@@ -72,12 +72,12 @@ const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { amount: 0.3 });
 
-    const cardVariants = {
+    const cardVariants: Variants = {
         hidden: { opacity: 0, y: 50 },
         visible: { opacity: 1, y: 0 },
     };
 
-    const overlayVariants = {
+    const overlayVariants: Variants = {
         rest: { opacity: 0, y: "100%" },
         hover: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
     };

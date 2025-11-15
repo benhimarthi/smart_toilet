@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import Image from 'next/image';
 import { Play, X, ChevronLeft, ChevronRight, Maximize, Minimize, Info, Pause } from 'lucide-react';
 
@@ -16,7 +16,7 @@ interface VideoCarouselProps {
 }
 
 // Animation variants
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -27,7 +27,7 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: 10, opacity: 0 },
   visible: {
     y: 0,
